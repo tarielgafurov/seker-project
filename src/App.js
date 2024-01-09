@@ -1,9 +1,10 @@
 import './App.css';
+import ImageAdd from './UI/imegePiker/ImegeAdd'
 
 function App() {
   return (
     <div className="App">
-      <h1>Avtandil</h1>
+      <ImageAdd/>
     </div>
   );
 }
