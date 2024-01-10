@@ -1,11 +1,11 @@
-import './App.css';
-
+import './App.css'
+import ImegeAdd from './UI/imegePiker/ImegeAdd'
 function App() {
-  return (
-    <div className="App">
-      <h1>Avtandil</h1>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<ImegeAdd />
+		</div>
+	)
 }
 
-export default App;
+export default App
