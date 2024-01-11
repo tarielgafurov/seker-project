@@ -1,23 +1,14 @@
+import './App.css'
+import Hearts from './UI/Heart/Hearts'
+import ContinerCheckBox from './UI/checkout/ContinerCheckBox'
 
-import React from 'react';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import colorReducer from './reducers';
-import HeartSVG from './UI/Heart';
+function App() {
+	return (
+		<div className='App'>
+			<ContinerCheckBox />
+			<Hearts />
+		</div>
+	)
+}
 
-const store = createStore(colorReducer);
-
-const App = () => {
-  return (
-    <Provider store={store}>
-      <div>
-       <HeartSVG/>
-      </div>
-    </Provider>
-  );
-};
-
-export default App;
-
-
-
+export default App
