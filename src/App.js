@@ -1,23 +1,12 @@
-
-import React from 'react';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import colorReducer from './reducers';
-import HeartSVG from './UI/Heart';
-
-const store = createStore(colorReducer);
+import React from 'react'
+import Hearts from './UI/Heart/Hearts'
 
 const App = () => {
-  return (
-    <Provider store={store}>
-      <div>
-       <HeartSVG/>
-      </div>
-    </Provider>
-  );
-};
+	return (
+		<div>
+			<Hearts />
+		</div>
+	)
+}
 
-export default App;
-
-
-
+export default App
