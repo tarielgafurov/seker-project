@@ -1,6 +1,5 @@
 import React from 'react'
-import Checkbox from './UI/checkout/CheckBox'
-import ProductFilter from './UI/checkout/ProductFilter'
+import Checkbox from './CheckBox'
 function ContinerCheckBox(props) {
 	return (
 		<div>

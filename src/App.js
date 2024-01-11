@@ -1,9 +1,11 @@
-import React from 'react'
+import './App.css'
 import Hearts from './UI/Heart/Hearts'
+import ContinerCheckBox from './UI/checkout/ContinerCheckBox'
 
-const App = () => {
+function App() {
 	return (
-		<div>
+		<div className='App'>
+			<ContinerCheckBox />
 			<Hearts />
 		</div>
 	)
