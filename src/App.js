@@ -1,10 +1,10 @@
 import './App.css';
-import ImageAdd from './UI/imegePiker/ImegeAdd'
+import RadioColor from './UI/RadioColor';
 
 function App() {
   return (
     <div className="App">
-      <ImageAdd/>
+      <RadioColor width={20}/>
     </div>
   );
 }
