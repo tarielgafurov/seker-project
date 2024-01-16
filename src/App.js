@@ -1,13 +1,13 @@
 import './App.css';
-import SekerInput from './components/sekerInput';
-
+import InputSeker from './components/InputSeker';
+ 
 function App() {
   return (
     <div className="App">
-      <h1>Avtandil</h1>
-      <SekerInput/>
+      {/* <Input width={"100px"}/> */}
+      <InputSeker/>
     </div>
   );
-}
+  }
 
-export default App;
+export default App
