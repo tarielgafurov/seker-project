@@ -1,12 +1,10 @@
 import './App.css'
-import Hearts from './UI/Heart/Hearts'
-import ContinerCheckBox from './UI/checkout/ContinerCheckBox'
 
+import Header from './components/Header'
 function App() {
 	return (
 		<div className='App'>
-			<ContinerCheckBox />
-			<Hearts />
+			<Header />
 		</div>
 	)
 }
