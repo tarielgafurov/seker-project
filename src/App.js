@@ -1,9 +1,9 @@
 import './App.css'
-import ImegeAdd from './UI/imegePiker/ImegeAdd'
+import Header from './components/Header'
 function App() {
 	return (
 		<div className='App'>
-			<ImegeAdd />
+			<Header />
 		</div>
 	)
 }
