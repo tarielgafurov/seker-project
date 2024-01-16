@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Select = (props) => {
   return (
-    <SelectStyled style={{ width: props.width, height: props.height }}>
+    <SelectStyled>
       <select>
         <option>{props.children}</option>
       </select>
@@ -18,4 +18,9 @@ const SelectStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  select {
+    width: ${(props) => props.width};
+    height: ${(props) => props.height};
+  }
 `;

@@ -5,7 +5,6 @@ const Heart = () => {
 
   const toggleLike = () => {
     setIsLiked(!isLiked);
-    console.log("Heart");
   };
 
   return (
