@@ -33,6 +33,12 @@ function ImageAdd(props) {
 					key={index}
 					src={image}
 					handleDeleteImage={() => handleDeleteImage(index)}
+
+					handleEditImage={newImage => {
+						const updatedImages = [...images]
+						updatedImages[index] = newImage
+						setImages(updatedImages)
+					}}
 				/>
 			))}
 			{images.length < 3 && (
