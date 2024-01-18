@@ -1,11 +1,22 @@
-import React from 'react';
+// Select.js
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const Select = (props) => {
+const Select = ({ width, height, onChange, ...props }) => {
+  const [selectedValue, setSelectedValue] = useState('');
+
+  const onChangeHandler = (event) => {
+    const value = event.target.value;
+    setSelectedValue(value);
+    if (onChange) {
+      onChange(value);
+    }
+  };
+
   return (
-    <SelectStyled>
-      <select>
-        <option>{props.children}</option>
+    <SelectStyled width={width} height={height} {...props}>
+      <select onChange={onChangeHandler} value={selectedValue}>
+        {props.children}
       </select>
     </SelectStyled>
   );
@@ -20,7 +31,7 @@ const SelectStyled = styled.div`
   align-items: center;
 
   select {
-    width: ${(props) => props.width};
-    height: ${(props) => props.height};
+    width: ${(props) => props.width || '200px'};
+    height: ${(props) => props.height || '30px'};
   }
 `;
