@@ -1,11 +1,11 @@
 import './App.css';
-import InputSeker from './components/InputSeker';
+ import InputSeker from './components/InputSeker';
  
 function App() {
   return (
     <div className="App">
-      {/* <Input width={"100px"}/> */}
       <InputSeker/>
+      {/* <FormImage/> */}
     </div>
   );
   }
