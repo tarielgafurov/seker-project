@@ -59,7 +59,6 @@ const SliderStyle = styled.div`
   background-color:gray;
   margin-top: 40px;
    
-
   .thumb {
     width: 12px;
     height: 12px;
@@ -71,8 +70,6 @@ const SliderStyle = styled.div`
 
     &:active {
       cursor: grabbing;
-     
-    
     }
   }
 `
