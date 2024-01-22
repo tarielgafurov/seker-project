@@ -12,8 +12,8 @@ const InputSeker = () => {
     const [priceValue, setPriceValue] = useState('');
     const [haractikValue, setHaractikValue] = useState('');
     const [inputValue, setInputValue] = useState('');
-    
-     const handleTitleChange = (value) => {
+
+    const handleTitleChange = (value) => {
         setTitleValue(value);
     };
     const handlePriceChange = (value) => {
@@ -32,6 +32,10 @@ const InputSeker = () => {
     const handleSelectChange = (selectedValue) => {
         setInputValue(selectedValue);
     };
+    const handleCheckboxChange = (event) => {
+        // Обработка изменения флажка здесь
+        console.log('Флажок изменен');
+      };
     return (
         <GlavDiv>
             <h2>Данные товары</h2>
@@ -79,11 +83,11 @@ const InputSeker = () => {
             <StyleDiv1>
                 <StyleChekBox>
                     <ChekStyle1>
-                        <CheckBox />
+                        <CheckBox color="blue" onChange={handleCheckboxChange} />
                         <h4>Новый</h4>
                     </ChekStyle1>
                     <ChekStyle2>
-                        <CheckBox />
+                        <CheckBox color="red" onChange={handleCheckboxChange}/>
                         <h4>Б/У</h4>
                     </ChekStyle2>
                 </StyleChekBox>
@@ -93,7 +97,7 @@ const InputSeker = () => {
                     </StyleColor>
                     <StyleRadio>
                         <RadioColor color={"black"} border={"1px solid"} />
-                        <RadioColor color={"grey "} stroke={"2px solid "} />
+                        <RadioColor color={"white "} border={"2px solid "} />
                         <RadioColor color={"red"} />
                         <RadioColor color={"#00FFFF"} />
                         <RadioColor color={"#FF1493"} />
@@ -125,7 +129,7 @@ const Container = styled.div`
     justify-content: space-around;
     width: 1000px;
     margin: auto;
-`
+`  
 const Container1 = styled.div`
     display: flex;
     margin-bottom:5px;
