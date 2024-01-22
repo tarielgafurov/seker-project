@@ -5,7 +5,6 @@ import CheckBox from './CheckBox'
 const ProductFilter = ({ products, availableColors }) => {
 	const [selectedColors, setSelectedColors] = useState([])
 
-	// Проверка на наличие данных в products
 	if (!products) {
 		return <div>Loading...</div>
 	}

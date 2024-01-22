@@ -17,7 +17,7 @@ const Hearts = ({ onChange }) => {
 	}
 
 	const checkboxStyle = {
-		color: '#FC3A74', // Задайте желаемый цвет для чекбокса
+		color: '#FC3A74', 
 	}
 
 	return (
