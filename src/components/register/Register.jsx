@@ -23,7 +23,7 @@ function Register(props) {
 
     const handleRegisterClick = () => {
         console.log('Registration Details:', { email, phoneNumber, password });
-        // Добавьте очистку состояний после обработки
+        
         setEmail('');
         setPhoneNumber('');
         setPassword('');
@@ -58,7 +58,7 @@ const ContainerRegister = styled.div`
     justify-content: space-evenly;
     border-radius: 30px;
     background: #D9D9D9;
-    backdrop-filter: blur(8.5px); /* Добавляем backdrop-filter для размытия фона */
+    backdrop-filter: blur(8.5px); 
 
     h1 {
         width: 243px;

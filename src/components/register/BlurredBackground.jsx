@@ -7,9 +7,9 @@ const BlurredBackgroundContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:#5d535380; /* Замените на свою картинку или цвет фона */
+    background-color:#5d535380; 
     background-size: cover;
-    backdrop-filter: blur(.5px); /* Регулируйте параметры размытия, если нужно */
+    backdrop-filter: blur(.5px); 
 `;
 
 const BlurredBackground = ({ children }) => {
