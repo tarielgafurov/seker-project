@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search'
 // import image1 from '../components/Assets/Vector (2).png'
 // import image2 from '../components/Assets/Vector (1).png'
 import LongMenu from '../UI/LongMenu/LongMenu'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 export default function Header() {
 	return (
@@ -33,19 +33,25 @@ export default function Header() {
 			<ProfileDiv>
 				{/* <img src={image} alt='' /> */}
 				<b>
-					<Link>Войти</Link>
+					<Link to={'register'} underline='hover'>
+						Войти
+					</Link>
 				</b>
 			</ProfileDiv>
 			<ProfileDiv>
 				{/* <img src={image1} alt='' /> */}
 				<b>
-					<Link>Закладки</Link>
+					<Link to={'zakladki'} underline='hover'>
+						Закладки
+					</Link>
 				</b>
 			</ProfileDiv>
 			<ProfileDiv>
 				{/* <img src={image2} alt='' /> */}
 				<b>
-					<Link>Корзина</Link>
+					<Link to={'carzina'} underline='hover'>
+						Корзина
+					</Link>
 				</b>
 			</ProfileDiv>
 		</ConteynerHeader>
@@ -98,11 +104,18 @@ const ProfileDiv = styled.div`
 	display: flex;
 	align-items: center;
 	b {
-		color: #000;
-		font-family: Montserrat;
-		font-size: 16px;
-		font-style: normal;
-		font-weight: 500;
-		line-height: normal;
+		color: #075da8;
+	}
+`
+const StyledNavLink = styled(NavLink)`
+	font-family: Montserrat;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	text-decoration: none;
+	color: black;
+	&:hover {
+		/* Add any additional hover styles if needed */
 	}
 `
