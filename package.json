@@ -11,12 +11,17 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "framer-motion": "^10.17.9",
+    "material-ui-popup-state": "^5.0.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.21.2",
     "react-scripts": "5.0.1",
+<<<<<<< HEAD
     "react-transition-group": "^4.4.5",
+=======
+>>>>>>> e1dcba659bd7be69ec96094fb49edebd3a15b1d6
     "styled-components": "^6.1.8",
     "web-vitals": "^2.1.4"
   },

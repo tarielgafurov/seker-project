@@ -4,6 +4,10 @@ import styled from 'styled-components'
 function Button({
 	color,
 	width,
+
+	border,
+	height,
+
 	borderRadius,
 	padding,
 	backgroundColor,
@@ -19,6 +23,10 @@ function Button({
 
 	return (
 		<ButtonStyled
+
+			border={border}
+		    height={height}
+
 			color={color}
 			width={width}
 			borderRadius={borderRadius}
@@ -35,10 +43,16 @@ function Button({
 	)
 }
 
+
 export default Button
 
+
+
 const ButtonStyled = styled.button`
+	border: ${props => props.border || ''};
 	width: ${props => props.width || ''};
+	height: ${props => props.height || ''};
+
 	background-color: ${props => props.backgroundColor || '#9292EF'};
 	font-size: ${props => props.fontSize || '16px'};
 	padding: ${props => props.padding || '10px 30px'};
@@ -48,9 +62,10 @@ const ButtonStyled = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: ${props => props.justifyContent || 'center'};
-	border: none;
-`
 
-const ImgStyled = styled.img`
-	/* Добавьте стили для изображения, если это необходимо */
+	border: none;
+
+
 `
+	
+
