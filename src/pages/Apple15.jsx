@@ -6,8 +6,16 @@ import image2 from '../components/Assets/image 10.png'
 import Heart from '../UI/Heart'
 import RadioColor from '../UI/RadioColor'
 import Button from '../UI/button/Button'
-
+import { useLocation, useParams } from 'react-router-dom'
 const Apple15 = () => {
+	const { productId } = useParams()
+	const location = useLocation()
+	const { state } = location
+	console.log(productId)
+
+	// Если state не определен или null, устанавливаем значения по умолчанию
+	const { images = [], title = '', haractik = '', price = '' } = state || {}
+	console.log(price)
 	return (
 		<DivStyled>
 			<ImageDiv>
