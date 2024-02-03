@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Select from '../UI/Select';
 import RadioColor from '../UI/RadioColor';
 import Button from '../UI/button/Button';
-import CheckBox from '../UI/checkout/CheckBox';
+import CheckBox from '../UI/checkout/CheckBox'; 
 
 const InputSeker = () => {
     const [titleValue, setTitleValue] = useState('');

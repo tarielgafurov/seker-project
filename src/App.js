@@ -1,9 +1,10 @@
 import './App.css';
- git  
+import InputSeker from './components/InputSeker';
+ 
 function App() {
   return (
       <div className="App">
-      
+       <InputSeker/> 
     </div>
   );
 }
