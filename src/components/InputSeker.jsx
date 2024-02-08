@@ -5,7 +5,9 @@ import styled from 'styled-components';
 import Select from '../UI/Select';
 import RadioColor from '../UI/RadioColor';
 import Button from '../UI/button/Button';
-import CheckBox from '../UI/checkout/CheckBox'; 
+import CheckBox from '../UI/checkout/CheckBox';
+import { useDispatch } from 'react-redux'; // Импорт функции useDispatch
+import { fetchUserData } from '../store/features/inputSlice/inputSlice';
 
 const InputSeker = () => {
     const [titleValue, setTitleValue] = useState('');
@@ -20,6 +22,8 @@ const InputSeker = () => {
         haractik: false,
         // producer: false,
     });
+
+    const dispatch = useDispatch(); // Использование функции useDispatch для получения функции диспетчера
 
     const handleTitleChange = (value) => {
         setTitleValue(value);
@@ -40,52 +44,15 @@ const InputSeker = () => {
         setInputValue(selectedValue);
         setErrorFields((prevState) => ({ ...prevState, producer: !selectedValue.trim() }));
     };
+
     const handleButtonClick = async () => {
-        const hasErrors = Object.values(errorFields).some((field) => field);
-        if (hasErrors) {
-            console.error('Заполните все обязательные поля.');
-            return;
-        }
-        const data = {
-            title: titleValue,
-            price: priceValue,
-            characteristics: haractikValue,
-            // producer: inputValue,
-            new: isCheckedNew,
-            description: "uwgfiwuegfhol",
-        };
-
-        try {
-            const response = await fetch('http://13.126.42.105/api/v1/admin/product/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA2ODY4OTEwLCJpYXQiOjE3MDYyNjQxMTAsImp0aSI6IjdkZWJmZmI4MjlkMTQwNTM4Y2E4MWMyNDU1NGNiMGViIiwidXNlcl9pZCI6NH0.CT4F9GmmbWU1CJSd1tWFN6wUmb9IsGlLDUfosTYLj1I"
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (response.ok) {
-                console.log('Данные успешно отправлены на сервер');
-                setTitleValue('');
-                setPriceValue('');
-                setHaractikValue('');
-                setInputValue('');
-                setIsCheckedNew(false);
-                setIsCheckedUsed(false);
-                setErrorFields({
-                    title: false,
-                    price: false,
-                    haractik: false,
-                    // producer: false,
-                });
-            } else {
-                console.error('Ошибка при отправке данных на сервер');
-            }
-        } catch (error) {
-            console.error('Ошибка при отправке данных на сервер', error);
-        }
+        dispatch(fetchUserData(titleValue, priceValue, haractikValue,
+            inputValue,
+            isCheckedNew,
+            isCheckedUsed,
+            errorFields));
     };
+
     const handleCheckboxChange = (type) => {
         if (type === 'new') {
             setIsCheckedNew(!isCheckedNew);

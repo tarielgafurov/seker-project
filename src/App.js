@@ -3,8 +3,9 @@ import InputSeker from './components/InputSeker';
  
 function App() {
   return (
-      <div className="App">
-       <InputSeker/> 
+    <div className="App">
+  <InputSeker/>
+
     </div>
   );
 }

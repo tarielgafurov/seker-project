@@ -1,3 +1,4 @@
+// Input.js
 import React from 'react'
 import styled from 'styled-components'
 
@@ -38,7 +39,7 @@ export default Input
 const InputStyled = styled.input`
 	width: ${props => props.width || '200px'};
 	padding: ${props => props.padding || '10px'};
-	border-radius: ${props => props.borderRadius || '5px'};
+	border-radius: ${props => props.borderRadius || '0px'};
 	font-size: ${props => props.fontSize || '16px'};
 	color: ${props => props.color || 'black'};
 	border: 1px solid #e9e4e4;
