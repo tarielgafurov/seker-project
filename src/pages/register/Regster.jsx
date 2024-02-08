@@ -16,8 +16,7 @@ function Register(props) {
 	const handleSubmit = async e => {
 		e.preventDefault()
 		setUserName('')
-
-		// Вызываем экшен login с данными пользователя
+		setPassword('')
 		dispatch(login({ username, password }))
 	}
 

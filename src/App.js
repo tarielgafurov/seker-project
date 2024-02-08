@@ -1,9 +1,9 @@
 import './App.css'
-import Register from './pages/register/Regster'
+import Layout from './components/Layout'
 function App() {
 	return (
 		<div className='App'>
-			<Register />
+			<Layout />
 		</div>
 	)
 }
