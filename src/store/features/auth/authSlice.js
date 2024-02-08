@@ -1,41 +1,46 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { fetchData } from '../../fetchData'
 
-export const authSlice = createSlice({
+const authSlice = createSlice({
 	name: 'auth',
 	initialState: {
 		user: null,
-		status: null,
+		token: null,
+		error: null,
 		isLoading: false,
 	},
 	reducers: {
-		setUser: (state, action) => {
-			state.user = action.payload
-			state.status = 'User set successfully'
+		loginStart(state) {
+			state.isLoading = true
+			state.error = null
 		},
-		logout: (state, action) => {
-			state.user = null
-			state.status = 'User logged out'
+		loginSuccess(state, action) {
+			console.log(action)
+			state.isLoading = false
+			state.user = action.payload.user
+			state.token = action.payload.token
+		},
+		loginFailure(state, action) {
+			state.isLoading = false
+			state.error = action.payload
 		},
 	},
 })
 
-export const { setUser, logout } = authSlice.actions
+export const { loginStart, loginSuccess, loginFailure } = authSlice.actions
 
-export const fetchUser =
-	(method = 'POST', data = null) =>
-	async dispatch => {
-		try {
-			const response = await fetchData({
-				endpoint: '/token/',
-				method: 'POST',
-				body: data,
-			})
-			const userData = response?.payload
-			dispatch(setUser(userData))
-		} catch (error) {
-			console.error('Error fetching user data:', error.message)
-		}
+export const login = credentials => async dispatch => {
+	dispatch(loginStart())
+	try {
+		const responseData = await fetchData({
+			endpoint: 'token/',
+			method: 'POST',
+			body: credentials,
+		})
+		dispatch(loginSuccess(responseData)) // Предполагается, что сервер вернет user и token
+	} catch (error) {
+		dispatch(loginFailure(error.message))
 	}
+}
 
 export default authSlice.reducer

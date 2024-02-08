@@ -1,54 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux' // Импортируем useDispatch и useSelector
 import Input from '../../UI/input/Input'
 import styled from 'styled-components'
 import Button from '../../UI/button/Button'
 import BlurredBackground from './BlurredBackground'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchUser, setUser } from '../../store/features/auth/authSlice'
-import { useNavigate } from 'react-router-dom'
+import { login } from '../../store/features/auth/authSlice' // Импортируем action creator login из authSlice
 
 function Register(props) {
 	const [username, setUserName] = useState('')
 	const [password, setPassword] = useState('')
-	const dispatch = useDispatch()
-	const { isLoading } = useSelector(state => state.auth)
-	const navigate = useNavigate()
-	const [errors, setErrors] = useState({ username: '', password: '' })
+	const dispatch = useDispatch() // Получаем функцию диспатча
 
-	useEffect(() => {
-		dispatch(fetchUser())
-	}, [])
-
-	const validateForm = () => {
-		let valid = true
-		const newErrors = {}
-		setErrors({ ...newErrors })
-		if (!password.trim()) {
-			newErrors.password = 'Введите пароль'
-			valid = false
-		}
-
-		setErrors(newErrors)
-		return valid
-	}
+	const isLoading = useSelector(state => state.auth.isLoading) // Получаем состояние загрузки из стейта
 
 	const handleSubmit = async e => {
 		e.preventDefault()
+		setUserName('')
 
-		if (validateForm()) {
-			try {
-				// Отправляем запрос на сервер для аутентификации пользователя
-				const response = await dispatch(setUser({ username, password }))
-				const token = response.payload.token
-				localStorage.setItem('token', token)
-				setPassword('')
-				setUserName('')
-				dispatch(fetchUser())
-				navigate('/order')
-			} catch (error) {
-				console.error('Ошибка при выполнении запроса:', error)
-			}
-		}
+		// Вызываем экшен login с данными пользователя
+		dispatch(login({ username, password }))
 	}
 
 	return (
@@ -63,7 +33,8 @@ function Register(props) {
 					borderRadius='10px'
 					placeholder='E-mail (Gmail)'
 				/>
-				{errors.username && <ErrorMessage>{errors.username}</ErrorMessage>}
+				{/* Отображаем ошибку, если есть */}
+				{/* {errors.username && <ErrorMessage>{errors.username}</ErrorMessage>} */}
 
 				<Input
 					name='password'
@@ -74,14 +45,15 @@ function Register(props) {
 					placeholder='Пароль'
 					type='password'
 				/>
-				{errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
+				{/* Отображаем ошибку, если есть */}
+				{/* {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>} */}
 
 				<Button
 					type='submit'
 					width={'369px'}
 					backgroundColor='#FC3A74'
 					borderRadius={'10px'}
-					disabled={isLoading}
+					disabled={isLoading} // Делаем кнопку неактивной во время загрузки
 				>
 					{isLoading ? 'Загрузка ...' : 'Войти'}
 				</Button>
