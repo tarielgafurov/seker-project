@@ -4,25 +4,20 @@ import styled from 'styled-components'
 import Button from '../../UI/button/Button'
 import BlurredBackground from './BlurredBackground'
 import { useDispatch, useSelector } from 'react-redux'
+import { fetchUser, setUser } from '../../store/features/auth/authSlice'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import { setUser } from '../../redux/features/auth/authSlice' // Adjust import here
-import axios from '../../utils/axios/instance'
 
 function Register(props) {
 	const [username, setUserName] = useState('')
 	const [password, setPassword] = useState('')
-	const { status, isLoading } = useSelector(state => state.auth)
 	const dispatch = useDispatch()
+	const { isLoading } = useSelector(state => state.auth)
 	const navigate = useNavigate()
 	const [errors, setErrors] = useState({ username: '', password: '' })
 
 	useEffect(() => {
-		console.log(status)
-		if (status) {
-			toast(status)
-		}
-	}, [status, navigate, isLoading])
+		dispatch(fetchUser())
+	}, [])
 
 	const validateForm = () => {
 		let valid = true
@@ -42,19 +37,20 @@ function Register(props) {
 
 		if (validateForm()) {
 			try {
-				const response = await axios.post('/token/', { username, password })
-				console.log('Successful response:', response.data)
-				const data = { username, password }
-				dispatch(setUser(data))
+				// Отправляем запрос на сервер для аутентификации пользователя
+				const response = await dispatch(setUser({ username, password }))
+				const token = response.payload.token
+				localStorage.setItem('token', token)
 				setPassword('')
 				setUserName('')
+				dispatch(fetchUser())
 				navigate('/order')
 			} catch (error) {
-				console.error('Ошибка при регистрации:', error)
-				toast.error('Ошибка при регистрации. Пожалуйста, попробуйте еще раз.')
+				console.error('Ошибка при выполнении запроса:', error)
 			}
 		}
 	}
+
 	return (
 		<BlurredBackground>
 			<FormRegister onSubmit={handleSubmit}>

@@ -19,6 +19,7 @@ function Layout() {
 export default Layout
 const StyleLayout = styled.div`
 	width: 100%;
+	height: 900px;
 	border: 1px solid #000;
 	margin: auto;
 	display: flex;
@@ -34,4 +35,5 @@ const StyledMain = styled.div`
 	grid-gap: 10px;
 	background-color: #2196f3;
 	padding: 10px;
+	margin-top: 300px;
 `

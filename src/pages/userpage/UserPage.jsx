@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { fetchProducts } from '../../redux/features/userpageGet/userPageGet'
+import { fetchProducts } from '../../store/features/features/userpageGet/userPageGet'
 import Heart from '../../UI/Heart'
-import { createProduct } from '../../redux/features/post/heartPostSlice'
+import { createProduct } from '../../store/features/post/heartPostSlice'
 
 const UserPage = () => {
 	const dispatch = useDispatch()

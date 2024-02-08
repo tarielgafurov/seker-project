@@ -1,13 +1,6 @@
-import React from 'react'
-import AppRouter from './routes/AppRouter'
-import Heart from './UI/Heart'
-
-function App(props) {
-	return (
-		<div>
-			<AppRouter />
-		</div>
-	)
+import './App.css'
+function App() {
+	return <div className='App'></div>
 }
 
 export default App

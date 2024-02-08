@@ -1,8 +1,6 @@
-// components/OrdersList.js
-
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchOrders } from '../../redux/features/orderSlice/orderSlice'
+import { fetchOrders } from '../../store/features/orderSlice'
 
 const OrdersList = () => {
 	const dispatch = useDispatch()

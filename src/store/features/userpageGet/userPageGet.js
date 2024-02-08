@@ -1,11 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import axios from '../../../utils/axios/instance'
 
 export const fetchProducts = createAsyncThunk(
 	'products/fetchProducts',
 	async () => {
-		const response = await axios.get('user-page/product/')
-		return response.data
+		try {
+			const response = await fetch('user-page/product')
+			if (!response.ok) {
+				throw new Error('Failed to fetch products')
+			}
+			const data = await response.json()
+			return data
+		} catch (error) {
+			throw new Error('Failed to fetch products')
+		}
 	}
 )
 
@@ -14,7 +21,7 @@ const productSlice = createSlice({
 	initialState: {
 		products: {
 			results: [],
-			status: 'idle', // или какой-то начальный статус
+			status: 'idle',
 			error: null,
 		},
 	},
