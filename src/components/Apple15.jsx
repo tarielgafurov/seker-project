@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import image from './Assets/image 10.png'
-import image1 from './Assets/image 112.png'
+// import image1 from './Assets/image 112.png'
 import image2 from './Assets/image 113.png'
 import image3 from './Assets/Group 763.png'
 import Heart from '../UI/Heart'

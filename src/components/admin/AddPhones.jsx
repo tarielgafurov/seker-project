@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import Input from '../UI/input/Input';
-import ImageAdd from '../UI/imegePiker/ImegeAdd';
+import Input from '../../UI/input/Input';
+import ImageAdd from '../../UI/imegePiker/ImegeAdd';
 import styled from 'styled-components';
-import Select from '../UI/Select';
-import RadioColor from '../UI/RadioColor';
-import Button from '../UI/button/Button';
-import CheckBox from '../UI/checkout/CheckBox';
+import Select from '../../UI/Select';
+import RadioColor from '../../UI/RadioColor';
+import Button from '../../UI/button/Button';
+import CheckBox from '../../UI/checkout/CheckBox';
 
-const InputSeker = () => {
+const AddPhones = () => {
     const [titleValue, setTitleValue] = useState('');
     const [priceValue, setPriceValue] = useState('');
     const [haractikValue, setHaractikValue] = useState('');
@@ -177,7 +177,7 @@ const InputSeker = () => {
         </GlavDiv>
     )
 }
-export default InputSeker
+export default AddPhones
 
 const GlavDiv = styled.div`
     h2{
