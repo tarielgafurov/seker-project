@@ -180,6 +180,7 @@ const AddPhones = () => {
 export default AddPhones
 
 const GlavDiv = styled.div`
+    margin-top: 100px;
     h2{
         width: 205px;
         height: 30px;

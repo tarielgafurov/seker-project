@@ -1,16 +1,17 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import Button from '../UI/button/Button'
-import Input from '../UI/input/Input'
 import SearchIcon from '@mui/icons-material/Search'
 // import image from '../components/Assets/Vector.png'
 // import image1 from '../components/Assets/Vector (2).png'
 // import image2 from '../components/Assets/Vector (1).png'
 // import LongMenu from '../UI/LongMenu/LongMenu'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import Input from '../../UI/input/Input'
+import Button from '../../UI/button/Button'
 
 export default function AdminHeader() {
+	const navigate = useNavigate()
 	return (
 		<ConteynerHeader>
 			{/* <LongMenu cont={'bar'} /> */}
@@ -55,6 +56,7 @@ export default function AdminHeader() {
 					</Link> 
 				</b>
 			</ProfileDiv>
+			<Button onClick={()=>{navigate("addPhone")}}>Add phone</Button>
 		</ConteynerHeader>
 	)
 }
@@ -62,14 +64,15 @@ export default function AdminHeader() {
 const ConteynerHeader = styled.div`
 	position: fixed;
 	width: 1170px;
-	height: 56px;
 	display: flex;
 	background-color: aliceblue;
 	justify-content: space-between;
 	align-items: center;
 	z-index: 30;
 	margin: auto;
-	padding: 15px;
+	padding: 10px;
+	position: fixed;
+	top: 0;
 `
 const Seker = styled.div``
 const SekerDiv = styled.div`

@@ -1,29 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
-import image from './Assets/image 10.png'
+// import image from './Assets/image 10.png'
 // import image1 from './Assets/image 112.png'
-import image2 from './Assets/image 113.png'
-import image3 from './Assets/Group 763.png'
-import Heart from '../UI/Heart'
-import RadioColor from '../UI/RadioColor'
-import Button from '../UI/button/Button'
+// import image2 from './Assets/image 113.png'
+// import image3 from './Assets/Group 763.png'
+import Heart from '../../UI/Heart'
+import RadioColor from '../../UI/RadioColor'
+import Button from '../../UI/button/Button'
 
 const Apple15 = () => {
     return (
         <DivStyled>
             <ImageDiv>
                 <Image>
-                    <img src={image} alt="" />
+                    {/* <img src={image} alt="" /> */}
                 </Image>
                 <ImageRowDiv>
                     <ImgDiv>
-                        <img src={image} alt="" />
+                        {/* <img src={image} alt="" /> */}
                     </ImgDiv>
                     <ImgDiv1>
-                        <img src={image1} alt="" />
+                        {/* <img src={image1} alt="" /> */}
                     </ImgDiv1>
                     <ImgDiv2>
-                        <img src={image2} alt="" />
+                        {/* <img src={image2} alt="" /> */}
                     </ImgDiv2>
                 </ImageRowDiv>
             </ImageDiv>
@@ -53,7 +53,7 @@ const Apple15 = () => {
                         <b>Количество :</b>
                     </Quantity>
                     <BasketDiv>
-                        <img src={image3} alt="" />
+                        {/* <img src={image3} alt="" /> */}
                         <BasketBteg>1</BasketBteg>
                         <CounterDiv>
                             <b>+</b>
@@ -73,10 +73,11 @@ export default Apple15
 
 const DivStyled = styled.div`
 margin: auto;
-margin-top: 100px;
 width: 1014.75px;
 height: 500px; 
 display: flex;
+border: 2px solid red;
+margin-top: 100px;
 justify-content: space-between;
 
 

@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Image from '../../components/UI/Image'; 
+import Image from './Image';
 
-const images = [image1, image2, image3];
+// const images = [image1, image2, image3];
+const images = ["https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-james-wheeler-414612.jpg&fm=jpg",
+"https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-james-wheeler-414612.jpg&fm=jpg",
+"https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-james-wheeler-414612.jpg&fm=jpg"
+];
 
 const FormImage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

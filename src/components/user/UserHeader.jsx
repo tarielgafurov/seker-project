@@ -1,16 +1,22 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import Button from '../UI/button/Button'
-import Input from '../UI/input/Input'
+import Button from '../../UI/button/Button'
+import Input from '../../UI/input/Input'
 import SearchIcon from '@mui/icons-material/Search'
 // import image from '../components/Assets/Vector.png'
 // import image1 from '../components/Assets/Vector (2).png'
 // import image2 from '../components/Assets/Vector (1).png'
 // import LongMenu from '../UI/LongMenu/LongMenu'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useSearchParams } from 'react-router-dom'
 
 export default function UserHeader() {
+	const [search, setSearch] = useSearchParams()
+
+	const showRegistrForm = () =>{
+		search.set("registr", "form")
+		setSearch(search)
+	}
 	return (
 		<ConteynerHeader>
 			{/* <LongMenu cont={'bar'} /> */}
@@ -31,20 +37,16 @@ export default function UserHeader() {
 					<SearchIcon />
 				</Button>
 			</InputCont>
-			<ProfileDiv>
+			<ProfileDiv onClick={showRegistrForm}>
 				{/* <img src={image} alt='' /> */}
 				<b>
-					<Link to={'register'} underline='hover'>
-						Войти
-					</Link>
+					Войти
 				</b>
 			</ProfileDiv>
 			<ProfileDiv>
 				{/* <img src={image1} alt='' /> */}
 				<b>
-					<Link to={'zakladki'} underline='hover'>
-						Закладки
-					</Link>
+					Закладки
 				</b>
 			</ProfileDiv>
 			<ProfileDiv>
@@ -62,7 +64,7 @@ export default function UserHeader() {
 const ConteynerHeader = styled.div`
 	position: fixed;
 	width: 1170px;
-	height: 56px;
+	padding: 20px;
 	display: flex;
 	background-color: aliceblue;
 	justify-content: space-between;
@@ -70,6 +72,8 @@ const ConteynerHeader = styled.div`
 	z-index: 30;
 	margin: auto;
 	padding: 15px;
+	top: 0;
+
 `
 const Seker = styled.div``
 const SekerDiv = styled.div`
@@ -104,6 +108,7 @@ const ProfileDiv = styled.div`
 	justify-content: space-between;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 	b {
 		color: #075da8;
 	}
