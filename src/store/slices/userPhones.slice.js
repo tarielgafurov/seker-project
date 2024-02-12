@@ -19,7 +19,7 @@ export const userPhonesSlice = createSlice({
             state.isLodaing = false
         },
         rejected(state,action){
-            state.isLodaing = true
+            state.isLodaing = false
         }
     }
 })

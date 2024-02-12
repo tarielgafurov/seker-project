@@ -4,16 +4,17 @@ import Button from '../../UI/button/Button'
 import Input from '../../UI/input/Input'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { authRequest } from '../../store/slices/authSlice'
+import { authRequest, authSlice } from '../../store/slices/authSlice'
 
 function Register(props) {
 	const [username, setUserName] = useState('')
 	const [password, setPassword] = useState('')
-	const {isAuth} = useSelector((prevState)=>prevState.auth)
+	const [isDisabled,setIsDisabled] = useState(true)
+	const {isAuth, isLoading, message} = useSelector((prevState)=>prevState.auth)
 	const [search, setSearch] = useSearchParams()
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
-	console.log(isAuth);
+	console.log(isDisabled);
 
 
 	const handleSubmit = async e => {
@@ -27,6 +28,15 @@ function Register(props) {
 		search.delete("registr")
 		setSearch(search)
 	}
+
+	useEffect(()=>{
+		dispatch(authSlice.actions.deletePrevState())
+		if(username.length > 0 && password.length > 0){
+			setIsDisabled(false)
+		}else{
+			setIsDisabled(true)
+		}
+	},[username, password, dispatch])
 
 	const signInHandler=()=>{
 		const inputData = {
@@ -73,11 +83,11 @@ function Register(props) {
 					backgroundColor='#FC3A74'
 					borderRadius={'10px'}
 					onClick={signInHandler}
-					// disabled={isLoading} // Делаем кнопку неактивной во время загрузки
+					disabled={isDisabled} // Делаем кнопку неактивной во время загрузки
 				>
-					{/* {isLoading ? 'Загрузка ...' : 'Войти'} */}
-                    Войти
+					{isLoading ? 'Загрузка ...' : 'Войти'}
 				</Button>
+				{ <p className='badReq'>{message}</p>}
 			</FormRegister>
 		</>
 	)
@@ -114,6 +124,11 @@ const FormRegister = styled.form`
 	}
 	input::placeholder{
 		color: grey;
+	}
+	.badReq{
+		color: red;
+		position: absolute;
+		bottom: 98px;
 	}
 `
 
