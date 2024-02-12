@@ -7,6 +7,7 @@ export const userRoutes = () => {
   return (
     <Route path='/' element={<UserPage/>}>
       <Route path='phones' element={<Apple15/>} />
+      <Route path='innerPage' element={<h1>tuyf</h1>} />
     </Route>
   )
 }
