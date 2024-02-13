@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authSlice } from "./slices/authSlice";
-import { userPhonesSlice } from "./slices/userPhones.slice";
+import { userPhonesSlice } from "./slices/userPhonesSlice";
 import { adminPhones } from "./slices/adminPhonesSlice";
 
 

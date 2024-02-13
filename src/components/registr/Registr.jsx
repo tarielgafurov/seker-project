@@ -50,8 +50,9 @@ function Register(props) {
 	useEffect(()=>{
 		if(isAuth){
 			navigate("/admin")
+			search.delete("registr")
 		}
-	}, [isAuth, navigate])
+	}, [isAuth, search, navigate])
 
 	return (
 		<>

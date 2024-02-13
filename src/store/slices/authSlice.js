@@ -38,6 +38,7 @@ export const authSlice = createSlice({
 export const authRequest = createAsyncThunk(
     "auth",
     async (param, {dispatch})=>{
+        console.log(param);
         dispatch(authSlice.actions.pending())
         try {
             const userData = await fetchApi({
@@ -51,6 +52,7 @@ export const authRequest = createAsyncThunk(
             }
             const data = await userData.json()
             dispatch(authSlice.actions.fullfiled(data))
+            localStorage.setItem("token", data.access)
         } catch (error) {
             dispatch(authSlice.actions.rejected())
         }
