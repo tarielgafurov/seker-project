@@ -6,7 +6,7 @@ import SearchIcon from '@mui/icons-material/Search'
 // import image1 from '../components/Assets/Vector (2).png'
 // import image2 from '../components/Assets/Vector (1).png'
 // import LongMenu from '../UI/LongMenu/LongMenu'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Input from '../../UI/input/Input'
 import Button from '../../UI/button/Button'
 
@@ -35,7 +35,7 @@ export default function AdminHeader() {
 			<ProfileDiv>
 				{/* <img src={image} alt='' /> */}
 				<b>
-					<Link to={'register'} underline='hover'>
+					<Link to={'/'} underline='hover'>
 						Выйти
 					</Link>
 				</b>

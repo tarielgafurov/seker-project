@@ -6,6 +6,7 @@ import Select from '../../UI/Select';
 import RadioColor from '../../UI/RadioColor';
 import Button from '../../UI/button/Button';
 import CheckBox from '../../UI/checkout/CheckBox';
+import { fetchApi } from '../../api/fetchData';
 
 const AddPhones = () => {
     const [titleValue, setTitleValue] = useState('');
@@ -96,8 +97,28 @@ const AddPhones = () => {
 
     const isButtonDisabled = Object.values(errorFields).some((field) => field)
         || !titleValue || !priceValue || !haractikValue || !inputValue;
+
+
+        const data =async()=>{
+           
+            const data = {
+                title: "BACK",
+                price: 888,
+                characteristics: "rdtuyio",
+                // producer: inputValue,
+                new: true,
+                description: "uwgfiwuegfhol",
+            };
+            const res = await fetchApi({
+                url: "admin/product/",
+                method: "POST",
+                body: data
+            })
+
+        }
     return (
         <GlavDiv>
+            <button onClick={data}>TEST</button>
             <h2>Данные товары</h2>
             <>
                 <ImageAdd />
