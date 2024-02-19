@@ -50,7 +50,7 @@ const ButtonStyled = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: ${props => props.justifyContent || 'center'};
-	border: none;
+	border: ${(props)=> props.border || "none"};
 	font-weight: 600;
 `
 

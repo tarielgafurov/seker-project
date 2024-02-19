@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react'
 import UserHeader from '../components/user/UserHeader'
-import { useLocation, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { getRequestUserPagePhones } from '../store/slices/userPhonesSlice'
-import UserPhones from '../components/user/UserPhones'
 import Register from '../components/registr/Registr'
+import UserPhonesWrapper from '../components/user/UserPhonesWrapper'
 
 const UserPage = () => {
   const dispatch = useDispatch()
   const [search] = useSearchParams()
-  const location = useLocation()
 
 
   useEffect(()=>{
@@ -25,7 +24,7 @@ const UserPage = () => {
           <Register/>
         </RegisterWrapper>}
         <UserHeader/>
-        <UserPhones/>
+        <UserPhonesWrapper/>
     </UserPageStyle>
   )
 }

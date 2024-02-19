@@ -13,7 +13,6 @@ const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
 const CheckBox = ({ children, color, onChange }) => {
 	const handleChange = event => {
 		// Выводим цвет в консоль при изменении чекбокса
-		console.log(color)
 
 		// Вызываем переданную функцию onChange
 		onChange && onChange(event)

@@ -8,7 +8,7 @@ import SearchIcon from '@mui/icons-material/Search'
 // import image1 from '../components/Assets/Vector (2).png'
 // import image2 from '../components/Assets/Vector (1).png'
 // import LongMenu from '../UI/LongMenu/LongMenu'
-import { Link, NavLink, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 
 export default function UserHeader() {
 	const [search, setSearch] = useSearchParams()

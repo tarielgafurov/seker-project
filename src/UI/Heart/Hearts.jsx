@@ -7,12 +7,11 @@ import BookmarkIcon from '@mui/icons-material/Bookmark'
 
 const Hearts = ({ onChange }) => {
 	const handleFavoriteChange = event => {
-		console.log('Favorite checkbox checked:', event.target.checked)
-		onChange && onChange('favorite', event.target.checked)
+		onChange && onChange(event.target.checked)
 	}
 
 	const handleBookmarkChange = event => {
-		console.log('Bookmark checkbox checked:', event.target.checked)
+		// console.log('Bookmark checkbox checked:', event.target.checked)
 		onChange && onChange('bookmark', event.target.checked)
 	}
 
@@ -27,7 +26,7 @@ const Hearts = ({ onChange }) => {
 				checkedIcon={<Favorite />}
 				onChange={handleFavoriteChange}
 				style={checkboxStyle}
-			/>
+				/>
 			<Checkbox
 				icon={<BookmarkBorderIcon />}
 				checkedIcon={<BookmarkIcon />}
