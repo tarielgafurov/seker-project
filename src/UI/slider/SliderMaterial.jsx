@@ -7,6 +7,7 @@ const MAX = 100000;
 
 const SliderMaterial = () => {
   const [values, setValues] = useState([MIN, MAX]);
+  console.log(values);
 
   return (
     <ContainerStyle>
@@ -36,28 +37,33 @@ const calculate = (value, min, max) => {
 };
 
 const ContainerStyle = styled.div`
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 const BoxStyle = styled.div`
-  width: 400px;
+  width: 100%;
+
 `;
 const ValueIndicator = styled.div`
   position: absolute;
   top: 10px;  
   left: ${({ leftOff }) => `${leftOff}%`};  
   transform: translateX(-50%);
-  font-weight: bold;
-`;   
+  font-weight: 500;
+  font-size: 14px;
+  color: #8B8787;
+`
 const SliderStyle = styled.div`
   position: relative;
   width: 100%;
   height: 2px;
   background-color:gray;
   margin-top: 40px;
+  border: 2px solid #8B8787;
    
   .thumb {
     width: 12px;

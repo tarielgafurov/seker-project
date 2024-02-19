@@ -1,14 +1,14 @@
 import React from 'react'
 import Checkbox from './CheckBox'
-function ContinerCheckBox(props) {
+import CheckBox from './CheckBox'
+function ContinerCheckBox({products}) {
 	return (
 		<div>
-			<Checkbox color='pink'>Красный</Checkbox>
-			<Checkbox color='black'>Черный</Checkbox>
-			<Checkbox color='white'>Белый</Checkbox>
-			<Checkbox color='blue'>Синий</Checkbox>
-			<Checkbox color='lightblue'>Голубой</Checkbox>
-			<Checkbox color='pink'>Розовый</Checkbox>
+			{
+				products.map((el)=>{
+					return <CheckBox>{el}</CheckBox>
+				})
+			}
 		</div>
 	)
 }
