@@ -6,7 +6,9 @@ import Select from '../../UI/Select';
 import RadioColor from '../../UI/RadioColor';
 import Button from '../../UI/button/Button';
 import CheckBox from '../../UI/checkout/CheckBox';
-import { fetchApi } from '../../api/fetchData';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPhone } from '../../store/slices/addPhonesSlice';
+import Modal from '../../UI/modal/Modal';
 
 const AddPhones = () => {
     const [titleValue, setTitleValue] = useState('');
@@ -15,12 +17,17 @@ const AddPhones = () => {
     const [inputValue, setInputValue] = useState('');
     const [isCheckedNew, setIsCheckedNew] = useState(false);
     const [isCheckedUsed, setIsCheckedUsed] = useState(false);
+    const [showModal, setShowModal] = useState(false)
     const [errorFields, setErrorFields] = useState({
         title: false,
         price: false,
         haractik: false,
         // producer: false,
     });
+
+     const { status, isModal, message } = useSelector((prevState) => prevState.addPhone)
+
+    const dispatch = useDispatch()
 
     const handleTitleChange = (value) => {
         setTitleValue(value);
@@ -42,50 +49,7 @@ const AddPhones = () => {
         setErrorFields((prevState) => ({ ...prevState, producer: !selectedValue.trim() }));
     };
     const handleButtonClick = async () => {
-        const hasErrors = Object.values(errorFields).some((field) => field);
-        if (hasErrors) {
-            console.error('Заполните все обязательные поля.');
-            return;
-        }
-        const data = {
-            title: titleValue,
-            price: priceValue,
-            characteristics: haractikValue,
-            // producer: inputValue,
-            new: isCheckedNew,
-            description: "uwgfiwuegfhol",
-        };
-
-        try {
-            const response = await fetch('http://13.126.42.105/api/v1/admin/product/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA2ODY4OTEwLCJpYXQiOjE3MDYyNjQxMTAsImp0aSI6IjdkZWJmZmI4MjlkMTQwNTM4Y2E4MWMyNDU1NGNiMGViIiwidXNlcl9pZCI6NH0.CT4F9GmmbWU1CJSd1tWFN6wUmb9IsGlLDUfosTYLj1I"
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (response.ok) {
-                console.log('Данные успешно отправлены на сервер');
-                setTitleValue('');
-                setPriceValue('');
-                setHaractikValue('');
-                setInputValue('');
-                setIsCheckedNew(false);
-                setIsCheckedUsed(false);
-                setErrorFields({
-                    title: false,
-                    price: false,
-                    haractik: false,
-                    // producer: false,
-                });
-            } else {
-                console.error('Ошибка при отправке данных на сервер');
-            }
-        } catch (error) {
-            console.error('Ошибка при отправке данных на сервер', error);
-        }
+        dispatch(addPhone())
     };
     const handleCheckboxChange = (type) => {
         if (type === 'new') {
@@ -95,33 +59,18 @@ const AddPhones = () => {
         }
     };
 
+    const close = () => {
+        setShowModal(true)
+        dispatch(addPhone())
+    }
+
     const isButtonDisabled = Object.values(errorFields).some((field) => field)
         || !titleValue || !priceValue || !haractikValue || !inputValue;
 
-
-        const data =async()=>{
-           
-            const data = {
-                title: "BACK",
-                price: 888,
-                characteristics: "rdtuyio",
-                // producer: inputValue,
-                new: true,
-                description: "uwgfiwuegfhol",
-            };
-            const res = await fetchApi({
-                url: "admin/product/",
-                method: "POST",
-                body: data
-            })
-
-        }
     return (
         <GlavDiv>
-            <button onClick={data}>TEST</button>
-            <h2>Данные товары</h2>
             <>
-                <ImageAdd />
+                <ImageAdd value={inputValue} onChange={handleSelectChange} />
             </>
             <Container>
                 <StyleInput>
@@ -195,6 +144,9 @@ const AddPhones = () => {
                     </StyleButton>
                 </StyleDiv2>
             </StyleDiv1>
+            {isModal && (
+                <Modal variantModal='standart' onClose={close} timerClose={2000}>{message}</Modal>
+            )}
         </GlavDiv>
     )
 }
